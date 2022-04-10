@@ -76,11 +76,14 @@ public class Aspire {
         }catch(Exception e) {
         	System.out.println(e);
         }
-      //  driver.findElement(By.xpath(obj.getProperty("btnSaveRecord"))).click();
+
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(obj.getProperty("btnUpdateQuantity"))));
 
         driver.findElement(By.xpath(obj.getProperty("btnUpdateQuantity"))).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(obj.getProperty("btnCreate"))));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(obj.getProperty("lnkRemoveFltr"))));
+        driver.findElement(By.xpath(obj.getProperty("lnkRemoveFltr"))).click();
+        Thread.sleep(2234);
         driver.findElement(By.xpath(obj.getProperty("btnCreate"))).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(obj.getProperty("txtQuantity"))));
         driver.findElement(By.xpath(obj.getProperty("txtQuantity"))).clear();
@@ -130,6 +133,8 @@ public class Aspire {
     public void validateManufactrOrder() throws FileNotFoundException, InterruptedException {
     	driver.findElement(By.xpath(obj.getProperty("lnkMFHome"))).click();
     	 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(obj.getProperty("txtSearchRecords"))));
+        driver.findElement(By.xpath(obj.getProperty("lnkRemoveFltr"))).click();
+        Thread.sleep(2234);
     	 driver.findElement(By.xpath(obj.getProperty("txtSearchRecords"))).sendKeys(MFOrder);
     	 Thread.sleep(2234);
     	 driver.findElement(By.xpath(obj.getProperty("txtSearchRecords"))).sendKeys(Keys.ENTER);
@@ -145,6 +150,10 @@ public class Aspire {
     public void validateoldManufactrOrder() throws FileNotFoundException, InterruptedException {
         Thread.sleep(2234);
         driver.findElement(By.xpath(obj.getProperty("lnkMFHome"))).click();
+        Thread.sleep(2234);
+        driver.findElement(By.xpath(obj.getProperty("lnkMFHome"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(obj.getProperty("txtSearchRecords"))));
+        driver.findElement(By.xpath(obj.getProperty("lnkRemoveFltr"))).click();
         Thread.sleep(2234);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(obj.getProperty("txtSearchRecords"))));
         driver.findElement(By.xpath(obj.getProperty("txtSearchRecords"))).sendKeys("WH/MO/03438");
